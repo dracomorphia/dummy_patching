@@ -14,7 +14,7 @@
         - name: Run pycurl install
           ansible.builtin.shell: pip3 install pycurl
         - name: touch file
-          ansible.builtin.shell: cd / & touch patchfile
+          ansible.builtin.shell: cd / & mkdir patchdir
         - name: pwd 
           ansible.builtin.shell: pwd
         - name: who
