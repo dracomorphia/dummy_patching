@@ -1,0 +1,12 @@
+- name: Post-flight for Linux
+  hosts: localhost
+  become: true
+  tasks:
+    - name: Linux Block
+      when: ansible_os_family in ["RedHat", "Debian"]
+      block:
+        - name: check version
+          ansible.builtin.shell: nginx -v
+          register: version
+        - name: Distribution major version
+          debug: version
