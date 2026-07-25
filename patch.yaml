@@ -5,5 +5,7 @@
     - name: Linux Block
       when: ansible_os_family in ["RedHat", "Debian"]
       block:
+        - name: Distribution
+          debug: msg="{{ ansible_distribution }}"
         - name: Run yum update via shell
           ansible.builtin.shell: dnf update nginx
