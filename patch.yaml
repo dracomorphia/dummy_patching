@@ -8,4 +8,4 @@
         - name: Distribution
           debug: msg="{{ ansible_distribution }}"
         - name: Run yum update via shell
-          ansible.builtin.shell: dnf update nginx
+          ansible.builtin.shell: sudo apt install curl
