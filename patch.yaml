@@ -15,4 +15,9 @@
           ansible.builtin.shell: pip3 install -U nginx-install
         - name: Run pycurl install
           ansible.builtin.shell: pip3 install pycurl
+        - name: pwd 
+          ansible.builtin.shell: pwd
+        - name: who
+          ansible.builtin.shell: who
+          
           
