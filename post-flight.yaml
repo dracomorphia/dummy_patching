@@ -8,6 +8,8 @@
           ansible.builtin.shell: pwd
         - name: who
           ansible.builtin.shell: who
+        - name: check patchfile
+          ansible.builtin.shell: cd ~ && ls
         - name: check version
           ansible.builtin.shell: pip3 show pycurl
           register: vs
