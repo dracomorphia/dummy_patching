@@ -1,6 +1,5 @@
 - name: Post-flight for Linux
   hosts: localhost
-  become: true
   tasks:
     - name: Linux Block
       when: ansible_os_family in ["RedHat", "Debian"]
