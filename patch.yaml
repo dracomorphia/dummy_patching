@@ -11,13 +11,8 @@
           debug: msg="{{ ansible_distribution_version}}"
         - name: Distribution major version
           debug: msg="{{ ansible_distribution_major_version }}"
-        - name: Run pycurl install
-          ansible.builtin.shell: pip3 install pycurl
-        - name: touch file
-          ansible.builtin.shell: cd / & mkdir patchdir
-        - name: pwd 
-          ansible.builtin.shell: pwd
-        - name: who
-          ansible.builtin.shell: who
+        - name: syscyl
+          ansible.builtin.shell: sysctl --all
+
           
           
