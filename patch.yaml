@@ -1,7 +1,7 @@
-- name: Patch nginx for demo purposes 
+- name: Patch for Linuc
+  hosts: localhost
   become: true
   tasks:
-  
     - name: Linux Block
       when: ansible_os_family in ["RedHat", "Debian"]
       block:
