@@ -6,7 +6,7 @@
       when: ansible_os_family in ["RedHat", "Debian"]
       block:
         - name: check version
-          ansible.builtin.shell: pycurl --version
+          ansible.builtin.shell: pip show pycurl
           register: vs
         - name: Distribution major version
           debug: var=vs.stdout_lines
