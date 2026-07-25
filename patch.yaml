@@ -1,4 +1,4 @@
-- name: Patch for Linuc
+- name: Patch for Linux
   hosts: localhost
   become: true
   tasks:
@@ -6,7 +6,7 @@
       when: ansible_os_family in ["RedHat", "Debian"]
       block:
         - name: Apply updates using DNF
-          ansible.builtin.yum:
-            name: 'nginx'
+          ansible.builtin.dnf:
+            name: 'curl'
             state: latest
           when: ansible_os_family == "RedHat"
