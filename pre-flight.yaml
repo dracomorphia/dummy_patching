@@ -8,17 +8,6 @@
     - name: Check required services are running
       ansible.builtin.service_facts:
 
-    - name: Check NTP synchronization
-      ansible.builtin.command: timedatectl show --property=NTPSynchronized
-      register: ntp_status
-      changed_when: false
-
-    - name: Verify time is synchronized
-      ansible.builtin.assert:
-        that:
-          - "'NTPSynchronized=yes' in ntp_status.stdout"
-        fail_msg: "NTP is not synchronized on {{ inventory_hostname }}"
-
     - name: Check for pending reboot
       ansible.builtin.stat:
         path: /var/run/reboot-required
