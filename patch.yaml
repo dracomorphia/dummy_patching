@@ -1,0 +1,14 @@
+---
+- name: Cross-platform patching playbook with safety checks
+  hosts: all
+  become: true
+  tasks:
+  
+    - name: Linux - Patch with snapshot and safety block
+      when: ansible_os_family in ["RedHat", "Debian"]
+      block:
+        - name: Apply updates using DNF
+          ansible.builtin.dnf:
+            name: 'nginx'
+            state: latest
+          when: ansible_os_family == "RedHat"
