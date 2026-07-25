@@ -6,4 +6,4 @@
       when: ansible_os_family in ["RedHat", "Debian"]
       block:
         - name: Run yum update via shell
-          ansible.builtin.shell: yum update nginx
+          ansible.builtin.shell: dnf update nginx
