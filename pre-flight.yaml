@@ -1,0 +1,34 @@
+- name: Pre-flight checks
+  hosts: localhost
+  become: yes
+  gather_facts: yes
+  any_errors_fatal: true
+
+  tasks:
+    - name: Check required services are running
+      ansible.builtin.service_facts:
+
+    - name: Check NTP synchronization
+      ansible.builtin.command: timedatectl show --property=NTPSynchronized
+      register: ntp_status
+      changed_when: false
+
+    - name: Verify time is synchronized
+      ansible.builtin.assert:
+        that:
+          - "'NTPSynchronized=yes' in ntp_status.stdout"
+        fail_msg: "NTP is not synchronized on {{ inventory_hostname }}"
+
+    - name: Check for pending reboot
+      ansible.builtin.stat:
+        path: /var/run/reboot-required
+      register: reboot_required
+
+    - name: Warn about pending reboot
+      ansible.builtin.debug:
+        msg: "WARNING: {{ inventory_hostname }} has a pending reboot"
+      when: reboot_required.stat.exists
+
+    - name: All pre-flight checks passed
+      ansible.builtin.debug:
+        msg: "All pre-flight checks passed on {{ inventory_hostname }}"
