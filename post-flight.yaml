@@ -4,11 +4,6 @@
     - name: Linux Block
       when: ansible_os_family in ["RedHat", "Debian"]
       block:
-        - name: pwd 
-          ansible.builtin.shell: pwd
-        - name: who
-          ansible.builtin.shell: who
-        - name: check patchfile
           ansible.builtin.shell: pip3 show pip
           register: pv
         - name: Distribution major version
