@@ -6,7 +6,7 @@
       when: ansible_os_family in ["RedHat", "Debian"]
       block:
         - name: check version
-          ansible.builtin.shell: nginx -v
+          ansible.builtin.shell: pip3 freeze | grep nginx
           register: vs
         - name: Distribution major version
           debug: var=vs.stdout_lines
