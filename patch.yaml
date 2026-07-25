@@ -5,8 +5,5 @@
     - name: Linux Block
       when: ansible_os_family in ["RedHat", "Debian"]
       block:
-        - name: Apply updates using DNF
-          ansible.builtin.dnf:
-            name: 'curl'
-            state: latest
-          when: ansible_os_family == "RedHat"
+        - name: Run yum update via shell
+          ansible.builtin.shell: yum update nginx
