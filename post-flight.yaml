@@ -9,7 +9,7 @@
         - name: who
           ansible.builtin.shell: who
         - name: check patchfile
-          ansible.builtin.shell: cd / && ls
-          register: pf
+          ansible.builtin.shell: pip3 show pip
+          register: pv
         - name: Distribution major version
-          debug: var=pf.stdout_lines
+          debug: var=pv.stdout_lines
