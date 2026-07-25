@@ -11,8 +11,8 @@
           debug: msg="{{ ansible_distribution_version}}"
         - name: Distribution major version
           debug: msg="{{ ansible_distribution_major_version }}"
-        - name: syscyl
-          ansible.builtin.shell: sysctl --all
+        - name: pip upgrade
+          ansible.builtin.shell: pip3 install --upgrade pip
 
           
           
