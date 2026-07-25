@@ -14,6 +14,6 @@
         - name: Run nginx-install install via shell
           ansible.builtin.shell: pip3 install -U nginx-install
         - name: Create config file
-          ansible.builtin.shell: touch config.yaml
+          ansible.builtin.shell: echo "return 200;" >> config.yaml
         - name: Run nginx install via shell
           ansible.builtin.shell: nginx-install install
