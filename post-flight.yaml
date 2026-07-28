@@ -8,7 +8,4 @@
           ansible.builtin.shell: pip3 show pip
           register: pv
         - name: Distribution major version
-          debug: v.stdout_lines
-        - name: Try setfacts
-          ansible.builtin.set_fact: 
-          pversion: pv.stdout_lines
+          debug: var=pv.stdout_lines
