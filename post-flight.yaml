@@ -4,6 +4,7 @@
     - name: Linux Block
       when: ansible_os_family in ["RedHat", "Debian"]
       block:
+        - name: Register python
           ansible.builtin.shell: pip3 show pip
           register: pv
         - name: Distribution major version
