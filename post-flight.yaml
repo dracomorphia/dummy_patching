@@ -9,3 +9,6 @@
           register: pv
         - name: Distribution major version
           debug: var=pv.stdout_lines
+        - name: Try setfacts
+          ansible.builtin.set_fact: 
+          pversion: pv.stdout_lines
