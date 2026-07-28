@@ -9,3 +9,7 @@
           register: pv
         - name: Distribution major version
           debug: var=pv.stdout_lines
+        - name: Distribution major version
+          set_stats:
+            data:
+             lunch: tacos
